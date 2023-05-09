@@ -26,7 +26,7 @@ jobs:
       with:
         version: 5.15.9-lts-lgpl
         configure-args: -opensource -opengl desktop
-        submodules: "qtbase,qt3d,qtcharts,qtdoc,qtimageformats,qtlocation,qtquick3d,qtquickcontrols2, qtquicktimeline,qtserialport,qtsvg,qttools,qttranslations,qtxmlpatterns"
+        submodules: qtbase #,qt3d,qtcharts,qtdoc,qtimageformats,qtlocation,qtquick3d,qtquickcontrols2
         
     - name: Package binaries
       run: |
