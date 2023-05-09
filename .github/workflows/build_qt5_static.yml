@@ -20,7 +20,7 @@ jobs:
         # The version of LLVM and Clang binaries to install.
         version: 15.0.7
     - name: build qt
-      uses: anthepro/install-qt-static@v1
+      uses: duaneya/install-qt-static@v3
       with:
         version: 5.15.9-lts-lgpl
         configure-args: -opensource -opengl desktop
