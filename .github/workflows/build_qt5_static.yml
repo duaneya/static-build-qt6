@@ -1,1 +1,31 @@
+name: build64
 
+on: workflow_dispatch
+
+jobs:
+  GenerateWinStaticBinaries:
+    runs-on: windows-2019
+
+    steps:
+    - name: Install LLVM and Clang
+      # You may pin to the exact commit or the version.
+      # uses: KyleMayes/install-llvm-action@13d5d77cbf0bd7e35cb02a8f9ed4bb85bed3393b
+      uses: KyleMayes/install-llvm-action@v1.8.0
+      with:
+        # The version of LLVM and Clang binaries to install.
+        version: 15.0.7
+    - name: build qt
+      uses: anthepro/install-qt-static@v1
+      with:
+        version: 5.15.9
+        configure-args: -opensource -opengl desktop
+        submodules: qtbase,qt3d,qtcharts,qtdoc,qtimageformats,qtlocation,qtquick3d,qtquickcontrols2, qtquicktimeline,qtserialport,qtsvg,qttools,qttranslations,qtxmlpatterns
+        
+    - name: Package binaries
+      run: |
+        # Create archive of the pre-built Qt binaries
+        7z a qt5_515_static_msvc2019_64.zip ${{ runner.temp }}/Qt-static
+    - uses: actions/upload-artifact@v1
+      with:
+        name: qt5_515_static_msvc2019_64.zip
+        path: qt5_515_static_msvc2019_64.zip
