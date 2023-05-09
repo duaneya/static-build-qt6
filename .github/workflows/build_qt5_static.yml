@@ -17,7 +17,7 @@ jobs:
     - name: build qt
       uses: anthepro/install-qt-static@v1
       with:
-        version: 5.15
+        version: 5.15.9-lts-lgpl
         configure-args: -opensource -opengl desktop
         submodules: qtbase,qt3d,qtcharts,qtdoc,qtimageformats,qtlocation,qtquick3d,qtquickcontrols2, qtquicktimeline,qtserialport,qtsvg,qttools,qttranslations,qtxmlpatterns
         
